@@ -15,7 +15,7 @@ const sitemap = require('sitemap-generator');
 
 
 require('dotenv').config();
-app.use(express.static(path.join(__dirname, 'public')));
+app.use("/css", express.static(path.join(__dirname, 'public')));
 app.use("/css", express.static(path.join(__dirname, "node_modules/mdbootstrap-pro/css")));
 app.use("/js", express.static(path.join(__dirname, "node_modules/mdbootstrap-pro/js")));
 app.use(express.json());
