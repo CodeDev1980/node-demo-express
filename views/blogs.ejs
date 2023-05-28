@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header') -%>
+<body>
+<!--mdb-skin-->
+<!--Main Navigation-->
+<header>
+    <%- include('partials/navBar') -%>
+</header>
+
+
+<main style="margin-top: 120px;">
+    <div class="container my-5 py-5">
+        <h1 class="mb-4 font-weight-bold grey-text">Recent Blogs By Atranet Marketing & Consultants</h1>
+        <p class="lead font-weight-bold">
+            Taking the articles & facts into words and shared news with our partners and visitors.
+        </p>
+        <% for(i=0; i < blogs.length; i++){ %>
+            <div class="row justify-content-center mt-5 align-content-center">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-md-6 hover-zoom mb-3">
+                            <a href="/post/<%= blogs[i]._id %>">
+                                <img src="<%= blogs[i].image %>"
+                                     class="card-img-top"
+                                     loading="lazy"
+                                     alt="<%= blogs[i].title.substring(0, 70) %>">
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <p class="lead">Read about <span class="text-warning"><%= blogs[i].category %></span></p>
+                            <h2><%= blogs[i].title.substring(0, 44) %> %></h2>
+                            <h4><%= blogs[i].summary %></h4>
+                            <p class="text-muted mt-3">
+                                Posted By <%= blogs[i].userid.name %> On <%= blogs[i].datePosted.toLocaleString() %>
+                            </p>
+                            <a href="/post/<%= blogs[i]._id %>" class="btn btn-outline-info mt-3">Read Post</a>
+                            <% if(loggedIn) { %>
+                                <a href="/delete/post/<%= blogs[i]._id %>" class="btn btn-outline-warning mt-3">Delete Post</a>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</main>
+
+<!-- Footer -->
+<%- include('partials/footer') -%>
+<!-- Footer -->
+
+<%- include('partials/scripts') -%>
+</body>
+
+</html>

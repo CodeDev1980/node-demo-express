@@ -6,9 +6,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const favicon = require('serve-favicon');
 const fileUpload = require('express-fileupload');
-const expressSession = require('express-session');
-const flash = require('connect-flash');
 const app = express();
+const { auth } = require('express-openid-connect');
 const NodeCache = require( "node-cache" );
 let myCache = new NodeCache();
 const sitemap = require('sitemap-generator');
@@ -46,6 +45,7 @@ app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 app.use("/styles", express.static(path.join(__dirname, 'public')));
 app.use("/css", express.static(path.join(__dirname, "node_modules/mdbootstrap-pro/css")));
 app.use("/js", express.static(path.join(__dirname, "node_modules/mdbootstrap-pro/js")));
+app.use("/mdb-addons", express.static(path.join(__dirname, "node_modules/mdbootstrap-pro/mdb-addons")));
 app.use(express.json());
 myCache = new NodeCache( { stdTTL: 100 } )
 app.set('views', path.join(__dirname, 'views'));
@@ -53,17 +53,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(fileUpload())
-app.use(flash());
-app.use(expressSession({
-    secret: process.env.SECRET
-}))
 
-global.loggedIn = null;
-
-app.use("*", (req, res, next) => {
-    loggedIn = req.session.userId;
-    next()
-})
 
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
@@ -78,12 +68,48 @@ if(mongoose){
 const cacheService = require("express-api-cache");
 const {Cache} = require("memory-cache");
 const cache = cacheService.cache;
-const port = process.env.PORT;
 
-app.listen(port || 3300, cache("10 minutes"), () => {
-    console.log(`App listening on ${port}`)
+app.use(express.json());
+
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    clientID: process.env.CLIENT_ID,
+    issuerBaseURL: process.env.ISSUER_BASE_URL
+};
+
+const port = process.env.PORT || 3000;
+if (!config.baseURL && !process.env.BASE_URL && process.env.PORT && process.env.NODE_ENV !== 'production') {
+    config.baseURL = `http://localhost:${port}`;
+}
+
+app.use(auth(config));
+
+// Middleware to make the `user` object available for all views
+app.use(function (req, res, next) {
+    res.locals.user = req.oidc.user;
+    next();
 });
 
 app.use('/', router);
 
-app.use((req, res) => res.render('notFound'));
+// Catch 404 and forward to error handler
+app.use(function (req, res, next) {
+    const err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+// Error handlers
+app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('notFound', {
+        message: err.message,
+        error: process.env.NODE_ENV !== 'production' ? err : {}
+    });
+});
+
+http.createServer(app)
+    .listen(port, () => {
+        console.log(`Listening on ${config.baseURL}`);
+    });

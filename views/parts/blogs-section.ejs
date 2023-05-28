@@ -1,0 +1,110 @@
+<section class="section-space">
+    <div class="row mb-4">
+        <div class="col-md-8 mb-1">
+            <h2 class="font-weight-bold mb-4">Our Blog Categories</h2>
+        </div>
+        <div class="col-md-4 text-right mb-1">
+            <p class="lead">
+                <a href="/blogs">
+                    All Blogs >>>
+                </a>
+            </p>
+        </div>
+        <% if(locals.user) { %>
+        <div class="col-md-12">
+            <!-- Button trigger modal -->
+            <a class="btn btn-primary" data-toggle="modal" data-target="#blogForm">
+                Write A Blog
+            </a>
+
+            <!-- Modal -->
+            <div class="modal fade" id="blogForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Posting Blogs</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <div>
+                                    <form action="/store/post" enctype="multipart/form-data" method="post">
+                                        <div class="md-form">
+                                            <input type="text" id="form1" name="title" class="form-control">
+                                            <label for="form1">Blog Title</label>
+                                        </div>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" name="image" class="custom-file-input" id="inputGroupFile01"
+                                                       aria-describedby="inputGroupFileAddon01">
+                                                <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+                                            </div>
+                                        </div>
+                                        <div class="md-form">
+                                            <textarea type="text" id="message" name="body" class="form-control"></textarea>
+                                            <label for="message">Summary</label>
+                                        </div>
+                                        <button class="btn btn-primary mt-2" type="submit">submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <p class="h4 text-center">Created By Atranet Marketing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    <div class="row">
+        <div class="col-md-3 wow fadeInUp">
+            <div class="view">
+                <a href="#">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/8-col/img (121).webp" class="img-fluid" alt="sample image">
+                    <div class="mask flex-center rgba-black-strong">
+                        <h4 class="white-text">strong overlay</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 wow fadeInUp slow">
+            <div class="view">
+                <a href="#">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/8-col/img (121).webp" class="img-fluid" alt="sample image">
+                    <div class="mask flex-center rgba-black-strong">
+                        <h4 class="white-text">strong overlay</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 wow fadeInUp slower">
+            <div class="view">
+                <a href="#">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/8-col/img (121).webp" class="img-fluid" alt="sample image">
+                    <div class="mask flex-center rgba-black-strong">
+                        <h4 class="white-text">strong overlay</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 wow fadeInUp slower">
+            <div class="view">
+                <a href="#">
+                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/8-col/img (121).webp" class="img-fluid" alt="sample image">
+                    <div class="mask flex-center rgba-black-strong">
+                        <h4 class="white-text">strong overlay</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="contact"></div>
+</section>

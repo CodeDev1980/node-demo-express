@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header') -%>
+<style>
+    .postBg {
+        background: url('<%= singlePost.image %>') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        padding-top: 230px;
+        padding-bottom: 180px;
+    }
+</style>
+<body>
+<!--mdb-skin-->
+<!--Main Navigation-->
+<header>
+    <%- include('partials/navBar') -%>
+</header>
+
+<div class="postBg">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-10 text-dark">
+                <div class="card rgba-black-strong opacity-75 p-3">
+                    <h1 class="display-2 mb-3">
+                        <%= singlePost.title.substring(0, 44) %> %>
+                    </h1>
+                    <h2 class="display-4 fw-bold">
+                        <a href="/profile/<%= singlePost.userid._id %>">
+                            <p class="display-4 fw-bold text-info" style="color: #f4f4f4;"><%= singlePost.userid.name %></p>
+                        </a>
+                    </h2>
+                    <h3 class="fw-bold text-dark"> Posted On <%= singlePost.datePosted.toLocaleString() %></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="container-fluid my-5 py-4">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-10">
+                <div class="mb-5">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/blogs">Blogs</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Data</li>
+                        </ol>
+                    </nav>
+                </div>
+                <p class="lead">
+                    <%= singlePost.body %>
+                    <br><br>
+                    <% if(loggedIn) { %>
+                        <a href="/delete/post/<%= singlePost._id %>" class="btn btn-outline-warning">Delete Post</a>
+                    <% } %>
+                    <a href="<%= singlePost.url %>" class="btn btn-primary" target="_blank">URL Reference</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<%- include('partials/footer') -%>
+<!-- Footer -->
+
+<%- include('partials/scripts') -%>
+</body>
+
+</html>

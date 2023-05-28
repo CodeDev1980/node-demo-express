@@ -10,6 +10,7 @@
     "express-api-cache": "^1.0.4",
     "express-fileupload": "^1.4.0",
     "express-htaccess-middleware": "^0.1.0",
+    "express-openid-connect": "^2.16.0",
     "express-session": "^1.17.3",
     "follow-redirects": "^1.15.2",
     "mdbootstrap-pro": "git+https://oauth2:ayyqxLFCJZXCx8dwgqn9@git.mdbootstrap.com/mdb/jquery/jq-pro.git",

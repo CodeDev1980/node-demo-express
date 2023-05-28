@@ -1,5 +1,5 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark rgba-black-strong scrolling-navbar">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
         <img src="/assets/navLogo.png" height="55" width="120" alt="logo">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,20 +17,28 @@
                 <a class="nav-link" href="#contact">Contact</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#blogs">Blogs</a>
+                <a class="nav-link" href="/blogs">Blogs</a>
             </li>
         </ul>
         <ul class="navbar-nav nav-flex-icons">
+            <% if (locals.user) { %>
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link">
+                        Logout<i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/profile" class="nav-link">
+                        Profile
+                    </a>
+                </li>
+            <% } else { %>
             <li class="nav-item">
-                <a class="nav-link">
-                    <i class="fas fa-users"></i>
+                <a href="/login" class="nav-link">
+                    Login<i class="fas fa-sign-in-alt"></i>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link">
-                    <i class="fas fa-sign-in-alt"></i>
-                </a>
-            </li>
+            <% } %>
             <li class="nav-item">
                 <a class="nav-link"><i class="fab fa-facebook-f"></i></a>
             </li>

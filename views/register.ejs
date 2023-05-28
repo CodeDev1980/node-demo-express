@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header') -%>
+<body>
+<!--navigation-->
+<header>
+    <!-- Navbar -->
+    <%- include('partials/navBar') -%>
+    <!-- Navbar -->
+</header>
+
+<main style="margin-top: 130px; margin-bottom: 70px;">
+    <div class="container my-5 py-4">
+        <!-- Section: Design Block -->
+        <section>
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-10">
+                    <h1 class="display-4 mb-2 fw-bold">Register</h1>
+                    <% if(errors != null && errors.length > 0){ %>
+                        <ul class="list-group text-center list-group-light mb-5">
+                            <% for(i=0; i < errors.length; i++){ %>
+                                <li class="list-group-item px-3 border-0 rounded-3 list-group-item-danger mb-2">
+                                    <%= errors[i] %>
+                                </li>
+                            <% } %>
+                        </ul>
+                    <% } %>
+                    <form action="/store/user" method="post" enctype="multipart/form-data">
+                        <!-- 2 column grid layout with text inputs for the first and last names -->
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label" for="form3Example1"
+                                    >Your name</label
+                                    >
+                                    <input
+                                            name="name"
+                                            type="text"
+                                            id="form3Example1"
+                                            class="form-control"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label" for="form3Example2"
+                                    >Username</label
+                                    >
+                                    <input
+                                            name="username"
+                                            type="text"
+                                            id="form3Example2"
+                                            class="form-control"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Email input -->
+                        <div class="mb-4">
+                            <label class="form-label" for="form3Example3"
+                            >Email address</label
+                            >
+                            <input type="email" name="email" id="form3Example3" class="form-control" />
+
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="mb-4">
+                            <label class="form-label" for="form3Example4">Password</label>
+                            <input
+                                    name="password"
+                                    type="password"
+                                    id="form3Example4"
+                                    class="form-control"
+                            />
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="mb-3">
+                            <label class="form-label" for="aboutYou">Tell Us About You</label>
+                            <textarea name="about" id="aboutYou" class="form-control" rows="7"></textarea>
+
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4">
+                            Sign up
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- Section: Design Block -->
+    </div>
+</main>
+
+<%- include('partials/footer') -%>
+
+</body>
+<!-- MDB -->
+</html>

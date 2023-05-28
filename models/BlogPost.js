@@ -14,11 +14,6 @@ const BlogPostSchema = new Schema ({
         type: String,
         unique: true
     },
-    userid: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
     datePosted: {
         type: Date,
         default: new Date
