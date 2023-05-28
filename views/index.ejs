@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include('partials/header') -%>
 <body>
-<header>
+<header id="top">
     <%- include('partials/navBar') -%>
 
 </header>
@@ -12,8 +12,9 @@
             <div class="container">
                 <div class="row justify-content-center align-items-center" style="height: 100vh;">
                     <div class="col-lg-10 text-white">
-                        <h1 class="display-3">Node App Demo</h1>
-                        <h2>Built with Css, JavaScript & MDB4</h2>
+                        <h1 class="display-3 animated fadeInDown">Node App Demo</h1>
+                        <h2 class="animated fadeIn">Built with Css, JavaScript & MDB4</h2>
+                        <a href="#explore" class="btn btn-outline-white rounded-right">Let's Explore</a>
                     </div>
                 </div>
             </div>
@@ -22,13 +23,13 @@
 </div>
 <!--Main Layout-->
 <main>
-    <div class="container intro-space">
+    <div class="container intro-space" id="explore">
         <h2 class="text-center mb-4 font-weight-bold">What This App Can Do For You</h2>
         <!--Grid row-->
-        <div class="row text-center mt-5 mb-5">
+        <div class="row text-center mt-5 mb-5" id="about">
 
             <!--First column-->
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 wow fadeIn col-md-6">
                 <i class="fas fa-gem fa-3x blue-text"></i>
 
                 <p class="font-weight-bold my-3">Flexibility</p>
@@ -38,7 +39,7 @@
             <!--/First column-->
 
             <!--Second column-->
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 wow fadeIn col-md-6">
                 <i class="fas fa-chart-area fa-3x teal-text"></i>
 
                 <p class="font-weight-bold my-3">Functionality</p>
@@ -48,7 +49,7 @@
             <!--/Second column-->
 
             <!--Third column-->
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 wow fadeIn col-md-6">
                 <i class="fas fa-cogs fa-3x indigo-text"></i>
 
                 <p class="font-weight-bold my-3">Smooth Pages</p>
@@ -58,7 +59,7 @@
             <!--/Third column-->
 
             <!--Fourth column-->
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 wow fadeIn col-md-6">
                 <i class="fas fa-cloud-upload-alt fa-3x deep-purple-text"></i>
 
                 <p class="font-weight-bold my-3">Dynamic Content</p>
@@ -70,9 +71,9 @@
         </div>
         <!--/Grid row-->
 
-        <section>
+        <section class="mt-5">
             <div class="row section-space">
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-6 wow fadeInLeft mb-4">
                     <h2 class="font-weight-bold display-2">Our Gallery of Work</h2>
 
                 </div>
@@ -147,9 +148,9 @@
                 <!--Grid column-->
                 <div class="col-lg-6 col-md-6 mb-lg-0 mb-lg-0 mb-2">
 
-                    <h4 class="h4">Why is it so great?</h4>
+                    <h4 class="h4 wow fadeIn">Why is it so great?</h4>
 
-                    <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id quam sapiente molestiae
+                    <p class="text-muted wow fadeInUp">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id quam sapiente molestiae
                         numquam quas, voluptates omnis nulla ea odio quia similique corrupti magnam.</p>
 
                 </div>
@@ -158,8 +159,8 @@
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 text-center">
 
-                    <a class="btn btn-outline-info btn-md waves-effect" href="#" role="button">Take a Tour</a>
-                    <a class="btn btn-info btn-md" href="#" role="button">Start now<i class="fa fa-magic ml-1"></i></a>
+                    <a class="btn btn-outline-info btn-md waves-effect" href="/gallery" role="button">Take a Tour</a>
+                    <a class="btn btn-info btn-md" href="mailto:stephenbrooks714@gmail.com" role="button">Start now<i class="fa fa-magic ml-1"></i></a>
 
                 </div>
                 <!--Grid column-->
@@ -167,25 +168,76 @@
             </div>
             <!--Grid row-->
 
-
+            <div id="blogs"></div>
         </section>
         <!--Section: article-->
 
         <section class="section-space">
-            <div class="row">
-                <div class="col-md-8 mb-3">
+            <div class="row mb-4">
+                <div class="col-md-8 mb-1">
                     <h2 class="font-weight-bold mb-4">Our Blog Categories</h2>
                 </div>
-                <div class="col-md-4 text-right mb-3">
+                <div class="col-md-4 text-right mb-1">
                     <p class="lead">
                         <a href="">
                             All Blogs >>>
                         </a>
                     </p>
                 </div>
+                <div class="col-md-12">
+                    <!-- Button trigger modal -->
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#blogForm">
+                        Write A Blog
+                    </a>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="blogForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Posting Blogs</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <div>
+                                            <form action="/store/post" enctype="multipart/form-data" method="post">
+                                                <div class="md-form">
+                                                    <input type="text" id="form1" name="title" class="form-control">
+                                                    <label for="form1">Blog Title</label>
+                                                </div>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                                    </div>
+                                                    <div class="custom-file">
+                                                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile01"
+                                                               aria-describedby="inputGroupFileAddon01">
+                                                        <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+                                                    </div>
+                                                </div>
+                                                <div class="md-form">
+                                                    <textarea type="text" id="message" name="body" class="form-control"></textarea>
+                                                    <label for="message">Summary</label>
+                                                </div>
+                                                <button class="btn btn-primary mt-2" type="submit">submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <p class="h4 text-center">Created By Atranet Marketing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 wow fadeInUp">
                     <div class="view">
                         <a href="#">
                             <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/8-col/img (121).webp" class="img-fluid" alt="sample image">
@@ -195,7 +247,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 wow fadeInUp slow">
                     <div class="view">
                         <a href="#">
                             <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/8-col/img (121).webp" class="img-fluid" alt="sample image">
@@ -205,7 +257,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 wow fadeInUp slower">
                     <div class="view">
                         <a href="#">
                             <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/8-col/img (121).webp" class="img-fluid" alt="sample image">
@@ -215,7 +267,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 wow fadeInUp slower">
                     <div class="view">
                         <a href="#">
                             <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/8-col/img (121).webp" class="img-fluid" alt="sample image">
@@ -226,6 +278,7 @@
                     </div>
                 </div>
             </div>
+            <div id="contact"></div>
         </section>
 
         <!--Section: Content-->

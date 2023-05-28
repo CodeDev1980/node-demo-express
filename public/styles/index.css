@@ -1,0 +1,64 @@
+html {
+    scroll-behavior: smooth;
+}
+/* Color of the links BEFORE scroll */
+.navbar-scroll .nav-link,
+.navbar-scroll .navbar-toggler-icon {
+    color: #fff;
+}
+
+/* Color of the links AFTER scroll */
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-toggler-icon {
+    color: #4f4f4f;
+}
+
+/* Color of the navbar AFTER scroll */
+.navbar-scrolled {
+    background-color: #fff;
+}
+
+/* An optional height of the navbar AFTER scroll */
+.navbar.navbar-scroll.navbar-scrolled {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.homeBg {
+    background: url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80')
+    no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-top: 330px;
+    padding-bottom: 240px;
+}
+.intro-space {
+    margin-top: 110px;
+}
+.section-space {
+    margin-top: 80px;
+    margin-bottom: 70px;
+}
+.space {
+    letter-spacing: 27px;
+}
+@media(max-width:950px){
+    .space {
+        letter-spacing: 19px;
+    }
+}
+@media(max-width:750px){
+    .space {
+        letter-spacing: 15px;
+    }
+}
+@media(max-width:750px){
+    .space {
+        letter-spacing: 18px;
+    }
+    .text-wrap {
+        text-wrap: inherit;
+        width: 330px;
+    }
+}

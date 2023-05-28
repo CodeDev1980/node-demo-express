@@ -12,10 +12,37 @@ const app = express();
 const NodeCache = require( "node-cache" );
 let myCache = new NodeCache();
 const sitemap = require('sitemap-generator');
+const { http, https } = require('follow-redirects');
 
+http.get('http://node-demo-app.herokuapp.com/', 'node-demo-app.herokuapp.com/',response => {
+    response.on('data', chunk => {
+        console.log(chunk);
+    });
+}).on('error', err => {
+    console.error(err);
+});
+
+https.get('https://node-demo-app.herokuapp.com/', response => {
+    response.on('data', chunk => {
+        console.log(chunk);
+    });
+}).on('error', err => {
+    console.error(err);
+});
+
+// create generator
+const generator = sitemap('https://node-demo-app.herokuapp.com/', {
+    stripQuerystring: false
+});
+
+// register event listeners
+generator.on('done', () => {
+    // sitemaps created
+});
 
 require('dotenv').config();
-app.use(express.static(path.join(__dirname, 'public')));
+app.use("/styles", express.static(path.join(__dirname, 'public/styles')));
+app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 app.use("/css", express.static(path.join(__dirname, "node_modules/mdbootstrap-pro/css")));
 app.use("/js", express.static(path.join(__dirname, "node_modules/mdbootstrap-pro/js")));
 app.use(express.json());

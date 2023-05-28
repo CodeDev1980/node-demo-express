@@ -4,13 +4,7 @@
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/mdb.min.js"></script>
 <script>
-    // object-fit polyfill run
-    objectFitImages();
-
-    /* init Jarallax */
-    jarallax(document.querySelectorAll('.jarallax'));
-
-    jarallax(document.querySelectorAll('.jarallax-keep-img'), {
-        keepImg: true,
+    $( document ).ready(function() {
+        new WOW().init();
     });
 </script>

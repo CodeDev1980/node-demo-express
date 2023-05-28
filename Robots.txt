@@ -7,3 +7,5 @@ Disallow: /
 
 User-agent: *
 Allow: /
+
+sitemap: https://node-demo-app.herokuapp.com/
