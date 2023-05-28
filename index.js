@@ -41,12 +41,9 @@ generator.on('done', () => {
 });
 
 require('dotenv').config();
-<<<<<<< HEAD
 app.use("/styles", express.static(path.join(__dirname, 'public/styles')));
 app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
-=======
 app.use("/styles", express.static(path.join(__dirname, 'public')));
->>>>>>> ed64b83e9deb571df7fc0d698e572ae4d963a360
 app.use("/css", express.static(path.join(__dirname, "node_modules/mdbootstrap-pro/css")));
 app.use("/js", express.static(path.join(__dirname, "node_modules/mdbootstrap-pro/js")));
 app.use(express.json());
